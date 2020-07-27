@@ -12,7 +12,7 @@ const io = require('socket.io')(http);
 
 // definitions
 const port = new Serialport('/dev/cu.usbmodem1411', {
-  baudRate: 9600,
+  baudRate: 56000,
 });
 const parser = new Readline({
   delimiter: '\r\n',
@@ -24,7 +24,7 @@ port.pipe(parser);
 // Event handler
 port.on('open', () => {
   // eslint-disable-next-line no-console
-  console.log('Verbindung hergestellt.');
+  console.log('Connection.');
 
   io.on('connection', (client) => {
     client.on('control', (message) => {
